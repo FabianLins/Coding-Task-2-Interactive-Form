@@ -18,9 +18,10 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('src/assets/testData.txt')
+    fetch('https://cors-anywhere.herokuapp.com/radupintilie.dev.ascensys.ro/code_tests/testData.txt')
       .then((r) => r.text())
       .then(text => {
+
         const tableLines = text.split(/\r?\n/)
         //console.log(tableLines)
         setTable(tableLines)
@@ -52,7 +53,6 @@ function App() {
         setOptionC(outputC)
         setFullOptionC(outputC)
       })
-      console.log(fullTable)
   }, [])
 
 
@@ -94,7 +94,25 @@ function App() {
   */
   return (
     <div className="App">
-
+      <div className="a">
+        <span>A:</span>
+        <select onChange={changeField}>
+          {optionA.map(currOption => <option>{currOption}</option>)}
+        </select>
+      </div>
+      <div className="b">
+        <span>B:</span>
+        <select onChange={changeField}>
+          {optionB.map(currOption => <option>{currOption}</option>)}
+        </select>
+      </div>
+      <div className="c">
+        <span>C:</span>
+        <select onChange={changeField}>
+          {optionC.map(currOption => <option>{currOption}</option>)}
+        </select>
+      </div>
+      {table.map(tableLine => <div key={tableLine}> {tableLine} </div>)}
     </div>
   )
 }
