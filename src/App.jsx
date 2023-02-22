@@ -10,6 +10,7 @@ function App() {
   const [optionA, setOptionA] = useState([])
   const [optionB, setOptionB] = useState([])
   const [optionC, setOptionC] = useState([])
+  const txtFile = "A1,B1,C1\nA1,B1,C2\nA1,B1,C3\nA1,B2,C4\nA1,B2,C5\nA1,B3,C6\nA2,B4,C7\nA2,B5,C8\nA2,B5,C9\nA3,B6,C10"
 
   const [table, setTable] = useState([])
 
@@ -17,11 +18,11 @@ function App() {
     return [...new Set(a)];
   }
 
-  useEffect(() => {
-    fetch('https://cors-anywhere.herokuapp.com/radupintilie.dev.ascensys.ro/code_tests/testData.txt')
+  // Local Solution
+  /*useEffect(() => {
+    fetch('src/assets/testData.txt')
       .then((r) => r.text())
       .then(text => {
-
         const tableLines = text.split(/\r?\n/)
         //console.log(tableLines)
         setTable(tableLines)
@@ -53,6 +54,40 @@ function App() {
         setOptionC(outputC)
         setFullOptionC(outputC)
       })
+  }, [])*/
+
+  // Git Solution
+  useEffect(() => {
+    const tableLines = txtFile.split(/\r?\n/)
+    //console.log(tableLines)
+    setTable(tableLines)
+    setFullTable(tableLines)
+    let outputA = ["All"]
+    let outputB = ["All"]
+    let outputC = ["All"]
+
+    tableLines.forEach(currTableLine => {
+      //console.log(currTableLine)
+      const indexA = currTableLine.indexOf('A')
+      const indexB = currTableLine.indexOf('B')
+      const indexC = currTableLine.indexOf('C')
+
+      let shortStr = currTableLine.substring(indexA, indexB - 1)
+      outputA.push(shortStr)
+      shortStr = currTableLine.substring(indexB, indexC - 1)
+      outputB.push(shortStr)
+      shortStr = currTableLine.substring(indexC)
+      outputC.push(shortStr)
+    })
+    outputA = uniqueArr(outputA)
+    outputB = uniqueArr(outputB)
+    outputC = uniqueArr(outputC)
+    setOptionA(outputA)
+    setFullOptionA(outputA)
+    setOptionB(outputB)
+    setFullOptionB(outputB)
+    setOptionC(outputC)
+    setFullOptionC(outputC)
   }, [])
 
 
