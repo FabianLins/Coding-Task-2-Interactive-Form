@@ -93,22 +93,8 @@ function App() {
   */
   return (
     <div className="App">
-      <div className="a">
-        <span>A:</span>
-        <select onChange={changeField}>
-        </select>
-      </div>
-      <div className="b">
-        <span>B:</span>
-        <select onChange={changeField}>
-        </select>
-      </div>
-      <div className="c">
-        <span>C:</span>
-        <select onChange={changeField}>
-        </select>
-      </div>
-      {table.map(tableLine => <div key={tableLine}> {tableLine} </div>)}
+
+      {table.map(tableLine => <div key={tableLine}>{tableLine} </div>)}
     </div>
   )
 }
