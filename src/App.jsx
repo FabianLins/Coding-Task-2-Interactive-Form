@@ -93,8 +93,6 @@ function App() {
   */
   return (
     <div className="App">
-
-      {table.map(tableLine => <div key={tableLine}>{tableLine} </div>)}
     </div>
   )
 }
