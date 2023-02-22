@@ -52,6 +52,7 @@ function App() {
         setOptionC(outputC)
         setFullOptionC(outputC)
       })
+      console.log(fullTable)
   }, [])
 
 
@@ -93,6 +94,7 @@ function App() {
   */
   return (
     <div className="App">
+
     </div>
   )
 }
