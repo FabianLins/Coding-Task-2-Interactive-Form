@@ -96,19 +96,16 @@ function App() {
       <div className="a">
         <span>A:</span>
         <select onChange={changeField}>
-          {optionA.map(currOption => <option>{currOption}</option>)}
         </select>
       </div>
       <div className="b">
         <span>B:</span>
         <select onChange={changeField}>
-          {optionB.map(currOption => <option>{currOption}</option>)}
         </select>
       </div>
       <div className="c">
         <span>C:</span>
         <select onChange={changeField}>
-          {optionC.map(currOption => <option>{currOption}</option>)}
         </select>
       </div>
       {table.map(tableLine => <div key={tableLine}> {tableLine} </div>)}
